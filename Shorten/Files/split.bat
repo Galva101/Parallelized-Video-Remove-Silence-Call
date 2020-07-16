@@ -1,0 +1,1 @@
+ffmpeg -i in.mp4 -c copy -map 0 -segment_time 00:07:00 -f segment out%%03d.mp4
