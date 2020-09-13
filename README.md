@@ -10,3 +10,5 @@ To run it, *python* is needed, as well as *ffmpeg*, which executes all the split
 3. All instances of *start000.bat* etc. are called, they will each work on a segment created previously, and *MasterStart.bat* will wait for all of these processes to finish. The number of 19 *.bat* files is chosen arbitrarily, and can of course be adapted if necessary, especially if the source video file is too large, then two options would be, to either increase the segment size, or to add *start019.bat* etc.
 4. Upon Completion, *merge.bat* is called from inside *MasterStart.bat*, which will reassemble all the segments into one single video file, named *shortened.mp4* and it will also delete all the temporary video files created previously.
 5. *Call.bat* will then move *shortened.mp4* to the desktop, as well as the (merged) *in.mp4* in case the user still needs this file.
+
+6. *Loudnorm.bat* can be used to initially normalize a video's volume, as well as resample it to 41000hz in order to prevent any issues when feeding it into *wave.py* during the silence-removal process
