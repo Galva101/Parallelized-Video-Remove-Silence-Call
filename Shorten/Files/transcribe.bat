@@ -1,0 +1,2 @@
+python transcribe.py
+exit

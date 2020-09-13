@@ -1,7 +1,8 @@
 rem Split:
 call split.bat
 
-rem Start all and wait for all to terminate
+rem Start all and wait for all to terminate, transcribe here, 
+rem as well to call it separate from the shortening commands, in order to preserve the performance
 (
 start start000.bat
 start start001.bat
