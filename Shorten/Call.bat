@@ -1,5 +1,5 @@
 cd C:\Users\Roman\Desktop
-call ffmpeg -i v.mp4 -i a.mp4 -c copy in.mp4
+call ffmpeg -i v.mp4 -i a.mp4 -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 in.mp4
 del "a.mp4"
 del "v.mp4"
 move C:\Users\Roman\Desktop\in.mp4 C:\Users\Roman\Desktop\Shorten\Files
