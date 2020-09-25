@@ -220,22 +220,22 @@ out_wav.setsampwidth(sample_width)
 out_wav.setframerate(audio_frame_rate)
 
 def compress_audio(args, wav, start_frame, end_frame, result_frames):
+    if result_frames*2 <= end_frame - start_frame:
+        left_length = result_frames
+        right_length = result_frames
+    else:
+        left_length = (end_frame - start_frame + 1) // 2
+        right_length = end_frame - start_frame - left_length
+    crossfade_length = right_length + left_length - result_frames
     if result_frames == 0:
         return b''
-    elif result_frames == end_frame - start_frame:
+    elif result_frames == end_frame - start_frame or crossfade_length == 1:
         wav.setpos(start_frame)
         return wav.readframes(result_frames)
     else:
         channels = wav.getnchannels()
         sample_width = wav.getsampwidth()
         frame_width = sample_width*channels
-        if result_frames*2 <= end_frame - start_frame:
-            left_length = result_frames
-            right_length = result_frames
-        else:
-            left_length = (end_frame - start_frame + 1) // 2
-            right_length = end_frame - start_frame - left_length
-        crossfade_length = right_length + left_length - result_frames
         crossfade_start = (result_frames - crossfade_length) // 2
         wav.setpos(start_frame)
         left_frames = wav.readframes(left_length)
